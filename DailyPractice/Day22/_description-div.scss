@@ -1,0 +1,10 @@
+@mixin div($divHeight,$textSize) {
+      width: 100%;
+      height: $divHeight;
+      position: absolute;
+      bottom: -$divHeight;
+      color: #fff;
+      transition: all 0.5s ease;
+      font-size: $textSize;
+      background: linear-gradient(transparent, black);
+    }
