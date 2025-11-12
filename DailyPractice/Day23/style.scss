@@ -1,0 +1,192 @@
+@import "menu-btn-style";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #121212;
+  color: #f4f2ed;
+}
+
+body {
+  padding: 1rem;
+}
+
+@mixin flex-column($gap: 0rem) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+@mixin flex-row($gap: 0rem) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+}
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  text-transform: uppercase;
+  @include flex-center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .cart-btn {
+    color: #f4f2ed;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #292929;
+    @include flex-center;
+    gap: 0.5rem;
+    border-radius: 10px;
+  }
+  .navbar-wrapper {
+    @include flex-row(1rem);
+    .navbar {
+      @include flex-row;
+      display: none;
+    }
+  }
+}
+main {
+  height: 100%;
+  width: 100%;
+
+  .section-studio-hero {
+    width: 100%;
+    @include flex-column(1rem);
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .hero-text-area {
+      background-color: #1e1e1e;
+      padding: 2rem;
+      font-weight: 00;
+      @include flex-column(4rem);
+      text-transform: uppercase;
+      border-radius: 10px;
+
+      .studio-text {
+        font-size: 1rem;
+      }
+      .studio-description-box {
+        .description-heading {
+          font-size: 2rem;
+        }
+
+        .description-text {
+          color: #9e9d9a;
+          text-transform: none;
+          line-height: 2rem;
+          font-size: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        a {
+          text-decoration: none;
+          color: #f4f2ed;
+
+          .out-story-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .ourstory-btn-wrapper {
+              background-color: #292929;
+              padding: 0.5rem;
+              border-radius: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .section-studio-stats{
+    .stat-wrapper{
+      @include flex-center
+    }
+  }
+}
+
+//Responsive styles for Laptop
+@media (min-width: 1024px) {
+  header {
+    .logo-text {
+      font-size: 1.5rem;
+    }
+    .navbar-wrapper {
+      .cart-btn {
+        display: none;
+      }
+      .menu-btn {
+        display: none;
+      }
+      .navbar {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+
+        li {
+          background-color: #292929;
+          padding: 1rem;
+          border-radius: 10px;
+        }
+        li:last-child {
+          background-color: #cebd63;
+          color: #121212;
+        }
+      }
+    }
+  }
+
+  main {
+    .section-studio-hero {
+      flex-direction: row;
+
+      img {
+        width: 50%;
+      }
+
+      .hero-text-area {
+        width: 50%;
+        padding: 4rem;
+
+        .studio-text {
+          margin-bottom: 6rem;
+        }
+        .studio-description-box {
+        .description-heading {
+          font-size: 4rem;
+        }
+
+        .description-text {
+          color: #9e9d9a;
+          text-transform: none;
+          line-height: 2rem;
+          font-size: 20px;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}
+}
