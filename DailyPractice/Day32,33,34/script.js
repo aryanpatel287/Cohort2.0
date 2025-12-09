@@ -79,23 +79,41 @@
 
 
 
-// Print numbers divisible by 7 from 1 to 50
 function IntegerInput(promptToUser = "Enter a number") {
     let num;
+    let repititionCount = 0;
     while (true) {
-        num = prompt(`${promptToUser}`).trim()
-        if (num === null) {
-            alert("Please enter a number")
-            continue
+        if (repititionCount === 3) {
+            let userChoice = confirm("Do you want to continue entering a number one more time?")
+            if (userChoice) {
+                repititionCount--;
+            } else {
+                break
+            }
+        }
+        repititionCount++;
+        num = prompt(`${promptToUser}`)
+        console.log(`IntegerInput value : ${num}`)
+        if (num == null) {
+            let userChoice = confirm(`Click "OK" to exit`)
+            if (userChoice) {
+                num = null
+                break
+            } else {
+                continue
+            }
+        }
+        else {
+            num = num.trim()
+            if (isNaN(num)) {
+                alert("Please enter the number only one integer without space.")
+                continue
+            }
+
+            num = Number(num)
+            break
         }
 
-        if (isNaN(num)) {
-            alert("Please enter the number only one integer without space.")
-            continue
-        }
-
-        num = Number(num)
-        break
     }
     console.log("IntegerInput function is done executing")
     return num
@@ -212,7 +230,12 @@ let actionNum;
 let AccBalance = 1000
 while (true) {
     actionNum = IntegerInput("Enter the Numbers of action that you want to execute.\n1.Check Balance\n2.Widthdraw Money\n3.Deposit Money\n4.Exit")
+    console.log(`switch case : ${actionNum}`)
 
+    if (actionNum == null) {
+        console.log(`We are in Null case`);
+        break;
+    }
     //Actions for the Atm
     switch (actionNum) {
         case 1:
@@ -222,6 +245,9 @@ while (true) {
         case 2:
             while (true) {
                 let WidthdrawAmt = IntegerInput("Enter the amount you want to widthdraw.");
+                if(WidthdrawAmt == null){
+                    break;
+                }
                 if (WidthdrawAmt <= 0) {
                     let userChoice = confirm("Widthdrawal amount cannot be less than or zero.\nDo you wish to continue?")
                     if (userChoice) {
@@ -245,6 +271,9 @@ while (true) {
         case 3:
             while (true) {
                 let DepositAmt = IntegerInput("Enter the amount you want to Deposit.");
+                if(DepositAmt == null){
+                    break;
+                }
                 if (DepositAmt <= 0) {
                     let userChoice = confirm("Deposit amount cannot be less than or zero.\nDo you wish to continue?")
                     if (userChoice) {
@@ -263,11 +292,14 @@ while (true) {
             alert("Thank you for using our Atm.\nExiting...")
             break;
 
+
+
         default:
             alert("Invalid choice. Please enter a number between 1 and 4.");
 
 
     }
+
 
     //Breaking the Loop
     if (actionNum === 4) {
