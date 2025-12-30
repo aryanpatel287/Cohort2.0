@@ -122,7 +122,7 @@ main {
 
   .section-studio-stats{
     .stat-wrapper{
-      @include flex-center
+      display: grid;
     }
   }
 }

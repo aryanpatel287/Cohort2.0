@@ -129,9 +129,7 @@ main .section-studio-hero .hero-text-area .studio-description-box a .out-story-b
   border-radius: 25px;
 }
 main .section-studio-stats .stat-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
 }
 
 @media (min-width: 1024px) {
