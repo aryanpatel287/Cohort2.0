@@ -87,3 +87,5 @@ let obj1={
 }
 let {city}= obj1.address
 console.log(city)
+
+
