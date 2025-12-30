@@ -1,29 +1,18 @@
-let downloadBtn = document.querySelector('.download-btn')
-let loadingInner = document.querySelector('.loading-inner')
-let loadingSpeed = document.querySelector('.loadingSpeed')
 let card = document.querySelector('.card')
-let downloadStatus = document.createElement('p')
+let imgDiv = document.querySelector('.imgDiv')
+let likeIcon = document.querySelector('.like-icon')
 
-let grow = 0;
-downloadBtn.addEventListener('click', function () {
-  downloadBtn.style.pointerEvents = 'none'
-
-  let downloadSpeed = 50 + Math.floor(Math.random() * 50)
-
-
-  console.log(downloadSpeed)
-  let int = setInterval(() => {
-    grow++
-    loadingInner.style.width = grow + "%"
-    loadingSpeed.innerHTML = grow + '%'
-  }, downloadSpeed)
-
-
+imgDiv.addEventListener('dblclick', function () {
+  likeIcon.style.opacity = 1;
+  likeIcon.style.transform = 'translate(-50%,-50%) scale(1) rotate(0deg)'
   setTimeout(() => {
-    clearInterval(int)
-    downloadBtn.innerHTML = "Downloaded"
-    downloadBtn.style.opacity = 0.5
-    downloadStatus.innerHTML = `Downloaded in ${downloadSpeed / 10} Seconds`
-    card.appendChild(downloadStatus)
-  }, downloadSpeed * 100)
+    likeIcon.style.transform = 'translate(-50%,-300%) scale(1) rotate(0deg)'
+  }, 800);
+  setTimeout(() => {
+    likeIcon.style.opacity = 0;
+  }, 900)
+  setTimeout(() => {
+    likeIcon.style.transform = 'translate(-50%,50%) scale(0) rotate(-60deg)'
+  }, 1200);
 })
+
