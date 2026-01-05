@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: white;
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #111;
+  /* cursor: none; */
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cursor-no {
+  height: 40px;
+  position: fixed;
+  display: none;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.cursor-yes {
+  height: 40px;
+  position: fixed;
+  display: none;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.piano {
+  background: black;
+  width: 70%;
+  height: 40%;
+  /* position: relative; */
+}
