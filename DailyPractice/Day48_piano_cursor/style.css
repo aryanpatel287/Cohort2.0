@@ -3,6 +3,8 @@
   margin: 0;
   color: white;
   box-sizing: border-box;
+  font-family: "poppins";
+  flex-wrap: wrap;
 }
 
 html,
@@ -13,7 +15,7 @@ main {
 }
 
 body {
-  background-color: #111;
+  background-color: #222;
   /* cursor: none; */
 }
 
@@ -22,6 +24,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
 .cursor-no {
   height: 40px;
   position: fixed;
@@ -39,8 +42,195 @@ main {
 }
 
 .piano {
-  background: black;
   width: 70%;
-  height: 40%;
-  /* position: relative; */
+  height: 50%;
+  border-radius: 20px;
+  padding: 1rem;
+  background: linear-gradient(180deg,
+      #1b1b1b,
+      #0e0e0e);
+  border: 2px solid #000;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: #bdbdbd;
+}
+
+
+
+.piano-head {
+  width: 100%;
+  height: 20%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.piano-head span {
+  width: fit-content;
+  font-size: 1.5rem;
+
+}
+
+.piano-controls {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.volume {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.volume label {
+  font-size: 1rem;
+}
+
+#volume-slider {
+  appearance: none;
+  height: 0.3rem;
+  background: transparent;
+  border: 1px solid #b8b8b8;
+  border-radius: 5px;
+  outline: none;
+  background: linear-gradient(to right,
+      #b8b8b8 50%,
+      #333 50%);
+}
+
+#volume-slider::-webkit-slider-thumb {
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: #b8b8b8;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -0.2rem;
+  appearance: none;
+}
+
+.hide-keys-section {
+  height: 100%;
+position: relative;
+  width: 30%;
+}
+#hide-keys-input{
+  width: 0;
+  visibility: none;
+  position: relative;
+}
+.hide-keys-btn {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 23px;
+  background: #b8b8b8;
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  border-radius: 10px;
+}
+.hide-keys-btn::after{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+
+}
+
+
+.piano-keys-section {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+}
+
+.keys {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  padding: 1.25rem;
+  border-radius: 0 0 10px 10px;
+  /* transform: translateY(-5%) */
+  text-transform: capitalize;
+}
+
+.white-keys {
+  flex: 1;
+  background-color: white;
+  border: 1px solid #000;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      #ffffff,
+      #e9e9e9);
+  border: 1px solid #cfcfcf;
+  box-shadow:
+    inset 0 -4px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.1s ease;
+  color: #333333;
+
+
+}
+
+.white-keys:active , .active {
+  background: linear-gradient(to bottom,
+      #dcdcdc,
+      #cfcfcf);
+  box-shadow:
+    inset 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.black-keys {
+  width: 6.25%;
+  height: 70%;
+  background-color: black;
+  position: absolute;
+  top: -6px;
+  background: linear-gradient(to bottom,
+      #2a2a2a,
+      #000000);
+  box-shadow:
+    inset 0 -4px 6px rgba(255, 255, 255, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.8);
+  transition: all 0.1s ease;
+
+}
+
+.black-keys:active,.black-keys.active {
+  background: linear-gradient(to bottom,
+      #111111,
+      #000000);
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+.key-w {
+  left: 9.375%;
+}
+
+.key-e {
+  left: 21.875%;
+}
+
+.key-t {
+  left: 46.875%;
+}
+
+.key-y {
+  left: 59.375%;
+}
+
+.key-u {
+  left: 71.875%;
 }

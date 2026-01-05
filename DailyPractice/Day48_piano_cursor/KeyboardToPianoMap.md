@@ -1,36 +1,13 @@
 # Keyboard to Piano Note Mapping
 
-This table maps common computer keyboard keys to piano notes (one octave example):
-
-| Keyboard Key | Piano Note |
-|:------------:|:----------:|
-|      A       |    C4      |
-|      W       |   C#4/Db4  |
-|      S       |    D4      |
-|      E       |   D#4/Eb4  |
-|      D       |    E4      |
-|      F       |    F4      |
-|      T       |   F#4/Gb4  |
-|      G       |    G4      |
-|      Y       |   G#4/Ab4  |
-|      H       |    A4      |
-|      U       |   A#4/Bb4  |
-|      J       |    B4      |
-|      K       |    C5      |
-
-- White keys: A, S, D, F, G, H, J, K
-- Black keys: W, E, T, Y, U
-
-You can expand this mapping for more octaves as needed.
-
 # Piano Keyboard Structure with Sound Mapping
 
 Below is a visual representation of a piano octave, showing how each key (white and black) is mapped to a sound file (note name):
 
 
 ```
-		W   E     T   Y     U
-	 |   |     |   |     |
+  W   E       T   Y   U
+  |   |       |   |   |
 A   S   D   F   G   H   J   K
 C4  D4  E4  F4  G4  A4  B4  C5
 

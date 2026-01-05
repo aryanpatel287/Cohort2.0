@@ -14,6 +14,42 @@
     <img class="cursor-no" src="no.png" alt="">
     <img class="cursor-yes" src="yes.png" alt="">
     <div class="piano">
+      <div class="piano-head">
+        <span>Piano</span>
+        <div class="piano-controls">
+          <div class="volume">
+            <label for="volume-slider">Volume</label>
+            <input type="range" 
+            id="volume-slider"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.5">
+          </div>
+
+          <div class="hide-keys-section">
+            <input type="checkbox" name="hide-keys" id="hide-keys-input">
+            <label for="hide-keys-input" class="hide-keys-btn"></label>
+          </div>
+        </div>
+      </div>
+      <div class="piano-keys-section">
+
+        <div class="keys white-keys" data-key="a" data-sound="C4.mp3">a</div>
+        <div class="keys black-keys key-w" data-key="w" data-sound="Db4.mp3">w</div>
+        <div class="keys white-keys" data-key="s" data-sound="D4.mp3">s</div>
+        <div class="keys black-keys key-e" data-key="e" data-sound="Eb4.mp3">e</div>
+        <div class="keys white-keys" data-key="d" data-sound="E4.mp3">d</div>
+        <div class="keys white-keys" data-key="f" data-sound="F4.mp3">f</div>
+        <div class="keys black-keys key-t" data-key="t" data-sound="Gb4">t</div>
+        <div class="keys white-keys" data-key="g" data-sound="G4.mp3">g</div>
+        <div class="keys black-keys key-y" data-key="y" data-sound="Ab4.mp3">y</div>
+        <div class="keys white-keys" data-key="h" data-sound="A4.mp3 ">h</div>
+        <div class="keys white-keys" data-key="j" data-sound="Bb4.mp3">j</div>
+        <div class="keys black-keys key-u" data-key="u" data-sound="B4.mp3">u</div>
+        <div class="keys white-keys" data-key="k" data-sound="C5.mp3">k</div>
+
+      </div>
 
     </div>
   </main>
