@@ -3,8 +3,48 @@ let cursorYes = document.querySelector('.cursor-yes')
 let body = document.querySelector("body")
 let main = document.querySelector('main')
 let piano = document.querySelector('.piano')
-
 let volumeSlider = document.querySelector('#volume-slider')
+let pianoControlSection = document.querySelector('.piano')
+let keys = document.querySelectorAll('.keys')
+let hideKeyBtn = document.querySelector('#hide-keys-input')
+let hideKeyBg = document.querySelector('.hide-keys-btn')
+
+body.addEventListener('mouseenter', () => {
+    cursorNo.style.opacity = '1';
+})
+
+body.addEventListener('mousemove', (details) => {
+    console.log(details.x, details.y)
+    cursorNo.style.top = details.y + 'px'
+    cursorNo.style.left = details.x + 'px'
+    cursorYes.style.top = details.y + 'px'
+    cursorYes.style.left = details.x + 'px'
+})
+body.addEventListener('mouseleave', () => {
+    cursorNo.style.opacity = '0';
+});
+
+
+volumeSlider.addEventListener('mouseenter', () => {
+    cursorNo.style.opacity = '0';
+    body.style.cursor = 'pointer'
+});
+volumeSlider.addEventListener('mouseleave', () => {
+    cursorNo.style.opacity = '1';
+    body.style.cursor = 'none'
+});
+
+
+hideKeyBg.addEventListener('mouseenter', () => {
+    cursorNo.style.opacity = '0';
+    body.style.cursor = 'pointer'
+});
+hideKeyBg.addEventListener('mouseleave', () => {
+    cursorNo.style.opacity = '1';
+    body.style.cursor = 'none'
+});
+
+
 console.log(volumeSlider.value)
 function updateVolumeColor(value) {
     const percent = value * 100;
@@ -48,12 +88,17 @@ document.addEventListener('keydown', (e) => {
             keyEl.classList.add('active');
             setTimeout(() => keyEl.classList.remove('active'), 150);
         }
+        cursorNo.style.opacity = '0';
+        cursorYes.style.opacity = '1';
+        setTimeout(() => {
+            cursorNo.style.opacity = '1';
+            cursorYes.style.opacity = '0';
+        }, 1000);
     }
 
 
 })
 
-let keys = document.querySelectorAll('.keys')
 console.log(keys)
 keys.forEach(key => {
     key.addEventListener('click', () => {
@@ -62,19 +107,22 @@ keys.forEach(key => {
         const audio = new Audio(`./piano-mp3/` + sound)
         audio.volume = volumeSlider.value;
         audio.play()
+        cursorNo.style.opacity = '0';
+        cursorYes.style.opacity = '1';
+        setTimeout(() => {
+            cursorNo.style.opacity = '1';
+            cursorYes.style.opacity = '0';
+        }, 400);
     })
 })
 
-let hideKeyBbtn = document.querySelector('#hide-keys-input')
-setTimeout(() => {
-    console.log(hideKeyBbtn.checked)
-}, 3000);
-hideKeyBbtn.addEventListener('change', () => {
-    console.log(hideKeyBbtn.checked)
+
+hideKeyBtn.addEventListener('change', () => {
+    console.log(hideKeyBtn.checked)
     let keyName = document.querySelectorAll('.keys span')
     keyName.forEach(key => {
         console.log(key)
-        if (hideKeyBbtn.checked) {
+        if (hideKeyBtn.checked) {
             key.style.display = 'none';
 
         } else {
