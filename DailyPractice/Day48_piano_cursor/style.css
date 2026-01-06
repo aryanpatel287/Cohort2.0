@@ -16,7 +16,7 @@ main {
 
 body {
   background-color: #222;
-  /* cursor: none; */
+  cursor: none;
 }
 
 main {
@@ -28,17 +28,25 @@ main {
 .cursor-no {
   height: 40px;
   position: fixed;
-  display: none;
-  transform: translate(-50%, -50%);
+  opacity: 0;
+  /* transform: translate(-50%, -50%); */
+  transition: opacity 0.2s ease;
   z-index: 100;
 }
 
 .cursor-yes {
   height: 40px;
   position: fixed;
-  display: none;
-  transform: translate(-50%, -50%);
+  opacity: 0;
+  /* transform: translate(-50%, -50%); */
   z-index: 100;
+  transition: opacity 0.2s ease;
+}
+
+/* pointer-events: none; makes the image "invisible" to mouse events, so clicks pass through to the elements below (your piano keys, buttons, etc). */
+.cursor-no,
+.cursor-yes {
+  pointer-events: none;
 }
 
 .piano {
@@ -113,7 +121,7 @@ main {
   background-color: #b8b8b8;
   border-radius: 50%;
   cursor: pointer;
-  transform: translate(0%,1%);
+  transform: translate(0%, 1%);
   appearance: none;
 }
 
@@ -184,6 +192,7 @@ main {
   border-radius: 0 0 10px 10px;
   /* transform: translateY(-5%) */
   text-transform: capitalize;
+  /* cursor: pointer; */
 }
 
 .white-keys {
@@ -258,7 +267,7 @@ main {
   left: 71.875%;
 }
 
-#hide-keys-input:checked ~ .keys span{
+#hide-keys-input:checked~.keys span {
   opacity: 0;
   visibility: hidden;
-} 
+}
