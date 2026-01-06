@@ -41,11 +41,12 @@ document.addEventListener('keydown', (e) => {
     if (keyMap[key]) {
         console.log(keyMap[key])
         const audio = new Audio(`./piano-mp3/` + keyMap[key].sound)
+        audio.volume = volumeSlider.value;
         audio.play()
         const keyEl = document.querySelector(`.keys[data-key="${key}"]`);
         if (keyEl) {
-          keyEl.classList.add('active');
-          setTimeout(() => keyEl.classList.remove('active'), 150);
+            keyEl.classList.add('active');
+            setTimeout(() => keyEl.classList.remove('active'), 150);
         }
     }
 
@@ -57,8 +58,28 @@ console.log(keys)
 keys.forEach(key => {
     key.addEventListener('click', () => {
         const sound = key.dataset.sound;
+        console.log(sound)
         const audio = new Audio(`./piano-mp3/` + sound)
+        audio.volume = volumeSlider.value;
         audio.play()
     })
 })
 
+let hideKeyBbtn = document.querySelector('#hide-keys-input')
+setTimeout(() => {
+    console.log(hideKeyBbtn.checked)
+}, 3000);
+hideKeyBbtn.addEventListener('change', () => {
+    console.log(hideKeyBbtn.checked)
+    let keyName = document.querySelectorAll('.keys span')
+    keyName.forEach(key => {
+        console.log(key)
+        if (hideKeyBbtn.checked) {
+            key.style.display = 'none';
+
+        } else {
+            key.style.display = 'inline-block'
+
+        }
+    })
+})

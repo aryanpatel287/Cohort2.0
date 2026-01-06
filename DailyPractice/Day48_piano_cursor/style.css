@@ -4,7 +4,7 @@
   color: white;
   box-sizing: border-box;
   font-family: "poppins";
-  flex-wrap: wrap;
+
 }
 
 html,
@@ -69,7 +69,7 @@ main {
 }
 
 .piano-head span {
-  width: fit-content;
+  width: 50%;
   font-size: 1.5rem;
 
 }
@@ -87,6 +87,7 @@ main {
   width: 70%;
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 10px;
 }
 
@@ -112,39 +113,58 @@ main {
   background-color: #b8b8b8;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -0.2rem;
+  transform: translate(0%,1%);
   appearance: none;
 }
 
 .hide-keys-section {
   height: 100%;
-position: relative;
+  position: relative;
   width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#hide-keys-input{
+
+.hide-keys-section span {
+  font-size: 1rem;
+}
+
+#hide-keys-input {
   width: 0;
   visibility: none;
-  position: relative;
 }
+
 .hide-keys-btn {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 23px;
+  display: inline-block;
+  width: 3rem;
+  height: 1rem;
   background: #b8b8b8;
-  position: absolute;
-  top: 20%;
-  right: 10%;
+  position: relative;
+  cursor: pointer;
   border-radius: 10px;
 }
-.hide-keys-btn::after{
-  width: 20px;
-  height: 20px;
+
+.hide-keys-btn::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
-  background-color: red;
+  background-color: white;
 
 }
 
+
+#hide-keys-input:checked+.hide-keys-btn {
+  background: #888;
+}
+
+#hide-keys-input:checked+.hide-keys-btn::after {
+  transform: translateX(2rem);
+  margin-left: 2px;
+}
 
 .piano-keys-section {
   width: 100%;
@@ -178,12 +198,14 @@ position: relative;
   box-shadow:
     inset 0 -4px 6px rgba(0, 0, 0, 0.15);
   transition: all 0.1s ease;
-  color: #333333;
-
-
 }
 
-.white-keys:active , .active {
+.white-keys span {
+  color: #333333;
+}
+
+.white-keys:active,
+.active {
   background: linear-gradient(to bottom,
       #dcdcdc,
       #cfcfcf);
@@ -207,7 +229,8 @@ position: relative;
 
 }
 
-.black-keys:active,.black-keys.active {
+.black-keys:active,
+.black-keys.active {
   background: linear-gradient(to bottom,
       #111111,
       #000000);
@@ -234,3 +257,8 @@ position: relative;
 .key-u {
   left: 71.875%;
 }
+
+#hide-keys-input:checked ~ .keys span{
+  opacity: 0;
+  visibility: hidden;
+} 
