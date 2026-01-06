@@ -14,7 +14,6 @@ body.addEventListener('mouseenter', () => {
 })
 
 body.addEventListener('mousemove', (details) => {
-    console.log(details.x, details.y)
     cursorNo.style.top = details.y + 'px'
     cursorNo.style.left = details.x + 'px'
     cursorYes.style.top = details.y + 'px'
@@ -61,7 +60,7 @@ volumeSlider.addEventListener('input', (e) => {
 })
 
 const keyMap = {
-    'a': { 'key': 'a', 'sound': 'C4.mp3' },
+    'a': { 'key': 'a', 'sound': './piano/C4.mp3' },
     'w': { 'key': 'w', 'sound': 'Db4.mp3' },
     's': { 'key': 's', 'sound': 'D4.mp3 ' },
     'e': { 'key': 'e', 'sound': 'Eb4.mp3' },
@@ -76,11 +75,19 @@ const keyMap = {
     'k': { 'key': 'k', 'sound': 'C5.mp3' }
 }
 
+const audioCache = {}
+Object.keys(keyMap).forEach(key => {
+    const audio = new Audio(`./piano-mp3/` + keyMap[key].sound.trim())
+    audio.preload='auto' //tell browser ke audio ke pehle hi load kare 
+    audioCache[key] = audio
+})
+console.log(audioCache)
+
 document.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase()
     if (keyMap[key]) {
-        console.log(keyMap[key])
-        const audio = new Audio(`./piano-mp3/` + keyMap[key].sound)
+        const audio = audioCache[key]
+        audio.currentTime = 0; //Starting se chalu karne ke liye
         audio.volume = volumeSlider.value;
         audio.play()
         const keyEl = document.querySelector(`.keys[data-key="${key}"]`);
@@ -100,13 +107,15 @@ document.addEventListener('keydown', (e) => {
 })
 
 console.log(keys)
-keys.forEach(key => {
-    key.addEventListener('click', () => {
-        const sound = key.dataset.sound;
-        console.log(sound)
-        const audio = new Audio(`./piano-mp3/` + sound)
-        audio.volume = volumeSlider.value;
-        audio.play()
+keys.forEach(keyPressed => {
+    keyPressed.addEventListener('click', () => {
+        const key = keyPressed.dataset.key;
+        const audio = audioCache[key];
+        if (audio) {
+            audio.currentTime = 0;
+            audio.volume = volumeSlider.value;
+            audio.play();
+        }
         cursorNo.style.opacity = '0';
         cursorYes.style.opacity = '1';
         setTimeout(() => {

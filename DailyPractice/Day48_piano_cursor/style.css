@@ -88,6 +88,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .volume {
@@ -270,4 +271,19 @@ main {
 #hide-keys-input:checked~.keys span {
   opacity: 0;
   visibility: hidden;
+}
+
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .piano {
+    transform: rotate(90deg);
+    height: 30%;
+    width: 200%;
+  }
+}
+@media (max-width: 1000px) and (orientation: portrait) {
+  .piano {
+    height: 30%;
+    width: 80%;
+  }
 }
