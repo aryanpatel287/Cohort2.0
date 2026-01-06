@@ -8,7 +8,21 @@ let pianoControlSection = document.querySelector('.piano')
 let keys = document.querySelectorAll('.keys')
 let hideKeyBtn = document.querySelector('#hide-keys-input')
 let hideKeyBg = document.querySelector('.hide-keys-btn')
-
+const keyMap = {
+    'a': { 'key': 'a', 'sound': 'C4.mp3' },
+    'w': { 'key': 'w', 'sound': 'Db4.mp3' },
+    's': { 'key': 's', 'sound': 'D4.mp3 ' },
+    'e': { 'key': 'e', 'sound': 'Eb4.mp3' },
+    'd': { 'key': 'd', 'sound': 'E4.mp3' },
+    'f': { 'key': 'f', 'sound': 'F4.mp3' },
+    't': { 'key': 't', 'sound': 'Gb4.mp3' },
+    'g': { 'key': 'g', 'sound': 'G4.mp3' },
+    'y': { 'key': 'y', 'sound': 'Ab4.mp3' },
+    'h': { 'key': 'h', 'sound': 'A4.mp3' },
+    'u': { 'key': 'u', 'sound': 'Bb4.mp3' },
+    'j': { 'key': 'j', 'sound': 'B4.mp3' },
+    'k': { 'key': 'k', 'sound': 'C5.mp3' }
+}
 body.addEventListener('mouseenter', () => {
     cursorNo.style.opacity = '1';
 })
@@ -59,26 +73,11 @@ volumeSlider.addEventListener('input', (e) => {
     updateVolumeColor(e.target.value);
 })
 
-const keyMap = {
-    'a': { 'key': 'a', 'sound': './piano/C4.mp3' },
-    'w': { 'key': 'w', 'sound': 'Db4.mp3' },
-    's': { 'key': 's', 'sound': 'D4.mp3 ' },
-    'e': { 'key': 'e', 'sound': 'Eb4.mp3' },
-    'd': { 'key': 'd', 'sound': 'E4.mp3' },
-    'f': { 'key': 'f', 'sound': 'F4.mp3' },
-    't': { 'key': 't', 'sound': 'Gb4.mp3' },
-    'g': { 'key': 'g', 'sound': 'G4.mp3' },
-    'y': { 'key': 'y', 'sound': 'Ab4.mp3' },
-    'h': { 'key': 'h', 'sound': 'A4.mp3' },
-    'u': { 'key': 'u', 'sound': 'Bb4.mp3' },
-    'j': { 'key': 'j', 'sound': 'B4.mp3' },
-    'k': { 'key': 'k', 'sound': 'C5.mp3' }
-}
 
 const audioCache = {}
 Object.keys(keyMap).forEach(key => {
     const audio = new Audio(`./piano-mp3/` + keyMap[key].sound.trim())
-    audio.preload='auto' //tell browser ke audio ke pehle hi load kare 
+    audio.preload = 'auto' //tell browser ke audio ke pehle hi load kare 
     audioCache[key] = audio
 })
 console.log(audioCache)
@@ -86,7 +85,10 @@ console.log(audioCache)
 document.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase()
     if (keyMap[key]) {
+        console.log(audioCache[key])
+
         const audio = audioCache[key]
+
         audio.currentTime = 0; //Starting se chalu karne ke liye
         audio.volume = volumeSlider.value;
         audio.play()
@@ -110,6 +112,7 @@ console.log(keys)
 keys.forEach(keyPressed => {
     keyPressed.addEventListener('click', () => {
         const key = keyPressed.dataset.key;
+        console.log(audioCache[key])
         const audio = audioCache[key];
         if (audio) {
             audio.currentTime = 0;

@@ -278,12 +278,16 @@ main {
   .piano {
     transform: rotate(90deg);
     height: 30%;
-    width: 200%;
+    min-width: 500px;
+    width: 90vh;
   }
 }
-@media (max-width: 1000px) and (orientation: portrait) {
+
+@media (min-width: 601px) and (max-width:1000px) and (orientation: portrait) {
   .piano {
+    min-height: 20%;
     height: 30%;
     width: 80%;
+   
   }
 }
