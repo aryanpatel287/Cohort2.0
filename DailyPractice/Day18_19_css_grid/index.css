@@ -16,7 +16,7 @@ main {
     display: grid;
     grid-template-columns: 15% 85%;
     grid-template-rows: 10% 70% 20%;
-
+    
     grid-template-areas:"header header" "aside section" "footer footer";
     /* grid-template-columns: repeat(3, minmax(100px, 200px)) 400px;
     grid-template-rows: repeat(7, minmax(100px, 200px));
@@ -25,7 +25,11 @@ main {
     align-content: center;
     justify-content: center; */
 
+/* for equal distribution you can use 1fr , like grid-template-rows: 1fr 1fr 1fr; -> makes 3 equals parts  */
+
 }
+
+
 
 
 /* .box {
