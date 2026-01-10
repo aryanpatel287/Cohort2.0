@@ -84,7 +84,7 @@ const reelsData = [
     shareCount: 44,
     isFollowed: false,
     caption: "Copy. Paste. Pray.",
-    video: "./reels/v7.mp4",
+    video: "./reels/v3.mp4",
     userprofile: "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=930&auto=format&fit=crop"
   },
   {
@@ -95,7 +95,7 @@ const reelsData = [
     shareCount: 88,
     isFollowed: true,
     caption: "Code hits different at 2 AM.",
-    video: "./reels/v8.mp4",
+    video: "./reels/v1.mp4",
     userprofile: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=930&auto=format&fit=crop"
   },
   {
@@ -106,7 +106,7 @@ const reelsData = [
     shareCount: 51,
     isFollowed: false,
     caption: "Good UI hides bad code.",
-    video: "./reels/v9.mp4",
+    video: "./reels/v5.mp4",
     userprofile: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=930&auto=format&fit=crop"
   }
 ];
@@ -116,7 +116,7 @@ let sum = '';
 reelsData.forEach(reel => {
   sum = sum + `        
         <div class="reel">
-          <video  src="${reel.video}"></video>
+          <video autoplay loop muted src="${reel.video}"></video>
           <div class="reel-details">
             <div class="user-details">
               <img src="${reel.userprofile}" alt="" class="userProfile">
