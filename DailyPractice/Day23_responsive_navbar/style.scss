@@ -1,4 +1,11 @@
+// ============================================
+// IMPORTS
+// ============================================
 @import "menu-btn-style";
+
+// ============================================
+// RESET & BASE STYLES
+// ============================================
 * {
   padding: 0;
   margin: 0;
@@ -19,6 +26,9 @@ body {
   padding: 1rem;
 }
 
+// ============================================
+// MIXINS
+// ============================================
 @mixin flex-column($gap: 0rem) {
   display: flex;
   flex-direction: column;
@@ -29,12 +39,16 @@ body {
   flex-direction: row;
   gap: $gap;
 }
-@mixin flex-center() {
+@mixin flex-center($gap: 0rem) {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: $gap;
 }
 
+// ============================================
+// HEADER
+// ============================================
 header {
   text-transform: uppercase;
   @include flex-center;
@@ -63,10 +77,55 @@ header {
     }
   }
 }
+
+// ============================================
+// MAIN CONTENT
+// ============================================
 main {
   height: 100%;
   width: 100%;
 
+  .studio-section {
+    margin-top: 2rem;
+    width: 100%;
+    @include flex-column(1rem);
+
+    .studio-section-img,
+    img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+
+  // General text area section
+  .general-text-area {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    @include flex-column(4rem);
+    text-transform: uppercase;
+    border-radius: 10px;
+    // margin: 1rem 0;
+
+    .title-text {
+      font-size: 1rem;
+    }
+    .general-description-box {
+      .description-heading {
+        font-size: 2rem;
+      }
+
+      .description-text {
+        color: #9e9d9a;
+        text-transform: none;
+        font-weight: 200;
+        line-height: 2.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Hero section
   .section-studio-hero {
     width: 100%;
     @include flex-column(1rem);
@@ -79,7 +138,6 @@ main {
     .hero-text-area {
       background-color: #1e1e1e;
       padding: 2rem;
-      font-weight: 00;
       @include flex-column(4rem);
       text-transform: uppercase;
       border-radius: 10px;
@@ -88,15 +146,17 @@ main {
         font-size: 1rem;
       }
       .studio-description-box {
-        .description-heading {
+        .hero-description-heading {
           font-size: 2rem;
+          margin-bottom: 1rem;
         }
 
-        .description-text {
+        .hero-description-text {
           color: #9e9d9a;
           text-transform: none;
-          line-height: 2rem;
-          font-size: 1rem;
+          font-weight: 200;
+          line-height: 2.5rem;
+          font-size: 1.5rem;
           margin-bottom: 2rem;
         }
 
@@ -110,9 +170,12 @@ main {
             gap: 0.5rem;
 
             .ourstory-btn-wrapper {
-              background-color: #292929;
-              padding: 0.5rem;
-              border-radius: 25px;
+              svg {
+                background-color: #292929;
+                border: 1px solid #4c4c4c;
+                padding: 0.5rem;
+                border-radius: 50%;
+              }
             }
           }
         }
@@ -120,14 +183,47 @@ main {
     }
   }
 
-  .section-studio-stats{
-    .stat-wrapper{
-      display: grid;
+  // Statistics section
+  .section-studio-stats {
+    display: grid;
+    text-transform: uppercase;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .stat-wrapper {
+      @include flex-center();
+      @include flex-column(5px);
+
+      .stat-title {
+        color: #9e9d9a;
+        line-height: 2rem;
+        font-size: 1rem;
+      }
+      .stat {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // Philosophy section
+
+  // vision section
+  .section-studio-vision {
+    margin-top: 1rem;
+    @include flex-column(1rem);
+    .studio_vision_img {
+      width: 100%;
+      border-radius: 10px;
     }
   }
 }
 
-//Responsive styles for Laptop
+// ============================================
+// RESPONSIVE STYLES - LAPTOP (1024px+)
+// ============================================
 @media (min-width: 1024px) {
   header {
     .logo-text {
@@ -159,6 +255,42 @@ main {
   }
 
   main {
+    .studio-section {
+      width: 100%;
+      flex-direction: row;
+      gap: 1rem;
+
+      .studio-section-img,
+      img {
+        width: 50%;
+      }
+    }
+    .general-text-area {
+      width: 50%;
+      padding: 4rem;
+
+      .title-text {
+        margin-bottom: 6rem;
+      }
+      .general-description-box {
+        flex-direction: column;
+        justify-content: space-between;
+
+        .description-heading {
+          font-size: 3rem;
+        }
+
+        .description-text {
+          color: #9e9d9a;
+          text-transform: none;
+          line-height: 2rem;
+          column-count: 2;
+          font-size: 1.125rem;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+
     .section-studio-hero {
       flex-direction: row;
 
@@ -174,19 +306,23 @@ main {
           margin-bottom: 6rem;
         }
         .studio-description-box {
-        .description-heading {
-          font-size: 4rem;
-        }
+          .hero-description-heading {
+            font-size: 4rem;
+          }
 
-        .description-text {
-          color: #9e9d9a;
-          text-transform: none;
-          line-height: 2rem;
-          font-size: 20px;
-          margin-bottom: 2rem;
+          .hero-description-text {
+            color: #9e9d9a;
+            text-transform: none;
+            line-height: 2rem;
+            font-size: 20px;
+            margin-bottom: 2rem;
+          }
         }
       }
     }
+
+    .section-studio-philosophy {
+      flex-direction: row-reverse;
+    }
   }
-}
 }
