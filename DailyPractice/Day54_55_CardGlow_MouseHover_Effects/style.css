@@ -1,0 +1,165 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  position: relative;
+}
+
+
+:root {
+  --glowingThemeColor: rgb(255, 0, 123);
+  --glowingThemeBoxShadow: rgb(255, 0, 195);
+}
+
+
+/* Effect Change Button styles */
+.effect-change-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: white;
+}
+
+.effect-change-btn {
+  padding: 5px;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.effect-change-btn:hover {
+  background-color: #333;
+  scale: 0.95;
+  color: white;
+}
+
+
+/*Card Glowing Effect*/
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderAnimate {
+  from {
+    --rotate: 0deg;
+  }
+
+  to {
+    --rotate: 360deg;
+  }
+}
+
+.box {
+  color: white;
+  width: 20%;
+  min-width: 250px;
+  height: fit-content;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 0px solid rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  box-shadow: 0 0 0px var(--glowingThemeBoxShadow);
+  background:
+    linear-gradient(black, black)padding-box,
+    conic-gradient(from var(--rotate), black, var(--glowingThemeColor), black)border-box;
+  text-shadow: 0 0 0px var(--glowingThemeColor);
+  animation: borderAnimate 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  transition: all 0.2s linear;
+}
+
+.box.inactive {
+  display: none;
+}
+
+.box:hover {
+  animation-play-state: running;
+  border-width: 5px;
+  box-shadow: 0 0 50px var(--glowingThemeBoxShadow);
+  color: var(--glowingThemeColor);
+  text-shadow: 0 0 10px var(--glowingThemeColor);
+}
+
+img {
+  width: 100%;
+
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  anchor-name: --hoveringTarget;
+  width: 100%;
+  height: 100%;
+}
+
+nav.active {
+  display: flex;
+}
+
+.hover-anchor {
+  position: absolute;
+  top: anchor(top);
+  left: anchor(left);
+  bottom: anchor(bottom);
+  right: anchor(right);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  background-color: #333;
+  position-anchor: --hoveringTarget;
+  /* border-radius: 10px; */
+  transition: all 0.3s ease;
+}
+
+nav:has(.nav-links:hover) .hover-anchor {
+  border-radius: 10px;
+}
+
+.nav-links {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-links:hover {
+  anchor-name: --hoveringTarget;
+}
